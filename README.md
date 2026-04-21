@@ -19,7 +19,7 @@ Give it a coding task in plain English. The agent will:
 
 
 ## 🏗️ Architecture
-"""
+```
 User Input
 ↓
 Planner Node (LLaMA 3.3 70B via Groq)
@@ -33,7 +33,7 @@ Explainer Node
 ChromaDB Memory (save solution)
 ↓
 Final Response
-"""
+```
 
 
 ## 🛠️ Tech Stack
