@@ -5,3 +5,5 @@ memory/chroma_store/
 .venv/
 *.png
 *.json
+autocoder_agent.egg-info/
+test_ai.py
