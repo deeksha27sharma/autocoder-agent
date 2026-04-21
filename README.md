@@ -50,7 +50,7 @@ Final Response
 
 
 ## 📁 Project Structure
-
+```
 autocoder-agent/
 ├── agent/
 │   ├── graph.py          # LangGraph state machine
@@ -72,7 +72,7 @@ autocoder-agent/
 ├── .env
 ├── requirements.txt
 └── README.md
-
+```
 
 
 ## ⚡ Installation
