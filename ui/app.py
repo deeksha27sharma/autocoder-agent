@@ -2,10 +2,11 @@
 
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+import requests
 import streamlit as st
-from agent.graph import run_agent
+API_URL = os.getenv("API_URL", "https://autocoder-agent.onrender.com")
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Page Config
 st.set_page_config(
@@ -87,35 +88,14 @@ if prefill and not task:
     task = prefill
 
 if task:
-    # Show user message
-    with st.chat_message("user"):
-        st.markdown(task)
-    st.session_state.messages.append({"role": "user", "content": task})
-
-    # Run agent
-    with st.chat_message("assistant"):
-        with st.spinner("🤖 Agent is thinking..."):
-            result = run_agent(task)
-
-        # Show explanation
-        st.markdown(result["explanation"])
-
-        # Show code in expander
-        with st.expander("📝 View Generated Code"):
-            st.code(result["code"], language="python")
-
-        # Show metrics
-        col1, col2 = st.columns(2)
-        with col1:
-            st.metric("Success", "✅ Yes" if result["result"].get("success") else "❌ No")
-        with col2:
-            st.metric("Attempts", result["attempts"])
-
-    # Save to history
-    st.session_state.messages.append({
-        "role": "assistant",
-        "explanation": result["explanation"],
-        "code": result["code"],
-        "success": result["result"].get("success", False),
-        "attempts": result["attempts"]
-    })
+    with st.spinner("🤖 Agent is thinking..."):
+    response = requests.post(
+        f"{API_URL}/run",
+        json={"task": task},
+        timeout=120
+    )
+    if response.status_code == 200:
+        result = response.json()
+    else:
+        st.error(f"API error: {response.text}")
+        st.stop()
