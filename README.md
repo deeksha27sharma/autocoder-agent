@@ -77,6 +77,14 @@ autocoder-agent/
 
 ## ⚡ Installation
 
+##  Quick Start
+```
+Try the live demo instantly — no installation needed:
+👉 [https://autocoder-diksha.streamlit.app](https://autocoder-diksha.streamlit.app)
+```
+Or run locally by following the installation steps below.
+
+
 ### 1. Clone the repo
 ```bash
 git clone https://github.com/deeksha27sharma/autocoder-agent.git
@@ -150,14 +158,14 @@ Evaluated on 10 standard Python coding tasks:
 - **Benchmarking** — evaluated on 10 tasks with pass rate metrics
 
 
-## 🌐 Live Demo
-
+##  Live Demo
+```
 | | Link |
 |---|---|
 | 🤖 Streamlit UI | [autocoder-diksha.streamlit.app](https://autocoder-diksha.streamlit.app) |
 | ⚙️ API Docs | [autocoder-agent.onrender.com/docs](https://autocoder-agent.onrender.com/docs) |
 | 📦 GitHub | [deeksha27sharma/autocoder-agent](https://github.com/deeksha27sharma/autocoder-agent) |
-
+```
 > ⚠️ Note: API is hosted on Render free tier — first request may take 30-50 seconds to wake up.
 
 
