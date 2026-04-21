@@ -5,7 +5,6 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import chromadb
-from chromadb.utils import embedding_functions
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,17 +12,13 @@ load_dotenv()
 # Setup ChromaDB 
 MEMORY_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "memory", "chroma_store")
 
-embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
-    model_name="all-MiniLM-L6-v2"  # small, fast, free model
-)
+embedding_fn = embedding_functions.DefaultEmbeddingFunction()
 
 client = chromadb.PersistentClient(path=MEMORY_PATH)
 
 collection = client.get_or_create_collection(
-    name="coding_solutions",
-    embedding_function=embedding_fn
+    name="coding_solutions"
 )
-
 
 # Core Functions
 
